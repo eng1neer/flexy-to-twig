@@ -1,0 +1,33 @@
+{
+  "name": "flexy-to-twig",
+  "version": "1.0.2",
+  "description": "Converts X-Cart 5 Flexy templates to Twig",
+  "main": "flexy-to-twig.js",
+  "bin": "flexy-to-twig.js",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jison": "*",
+    "gulp-insert": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eng1neer/flexy-to-twig.git"
+  },
+  "keywords": [
+    "flexy",
+    "twig",
+    "xcart"
+  ],
+  "author": "Nikita Pchelintsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eng1neer/flexy-to-twig/issues"
+  },
+  "homepage": "https://github.com/eng1neer/flexy-to-twig#readme"
+}

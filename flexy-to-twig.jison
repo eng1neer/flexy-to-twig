@@ -19,7 +19,7 @@ lparen                      '('
 rparen                      ')'
 lt                          '<'
 gt                          '>'
-modifier                    ('striptags'|'h'|'r'|'u'|'s'|'nl2br')
+modifier                    ('striptags'|'h'|'r'|'u'|'s'|'b'|'nl2br')
 dot                         '.'
 comma                       ','
 colon                       ':'
@@ -606,6 +606,7 @@ GLOBAL.renderTwig = function (nodes) {
                     h: 'raw',
                     r: '',
                     u: 'url_encode',
+                    b: 'nl2br',
                     nl2br: 'nl2br',
                     striptags: 'striptags'
                 };

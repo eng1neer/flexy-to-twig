@@ -1,6 +1,6 @@
 {
   "name": "flexy-to-twig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Converts X-Cart 5 Flexy templates to Twig",
   "main": "flexy-to-twig.js",
   "bin": "flexy-to-twig.js",

@@ -677,7 +677,7 @@ GLOBAL.renderTwig = function (nodes) {
 
                 return node.context == 'static' || node.context == 'self'
                     ? t('constant(\'' + node.member + '\', this)')
-                    : t('constant(\'' + node.context + '::' + node.member + '\')');
+                    : t('constant(\'' + node.context.replace(/\\/g, '\\\\') + '::' + node.member + '\')');
 
             default:
                 throw new Error('NOT IMPLEMENTED ' + type);

@@ -733,7 +733,7 @@ GLOBAL.renderTwig = function (nodes) {
                     return openTag('widget', node.params)
 
                         + (tplParams.length > 0
-                            ? t('{{ widget(') + renderNamedParams(params, scope) + t(') }}')
+                            ? t('{{ widget(') + renderNamedParamsOrHash(params, scope) + t(') }}')
                             : t('{% include ') + renderParamVal(template, scope) + t(' %}'))
 
                         + closeTag('widget');
@@ -751,7 +751,7 @@ GLOBAL.renderTwig = function (nodes) {
                     return openTag('widget', node.params)
                         + t('{{ widget(') + (typeof(clazz) != 'undefined' ? renderParamVal(clazz, scope) : '')
                         + (typeof(clazz) != 'undefined' && params.length > 0 ? ', ' : '')
-                        + renderNamedParams(params, scope) + t(') }}')
+                        + renderNamedParamsOrHash(params, scope) + t(') }}')
                         + closeTag('widget');
                 }
 
@@ -759,10 +759,20 @@ GLOBAL.renderTwig = function (nodes) {
                     return params.length > 0 ? t(' with ') + renderParamHash(params, scope) : t('');
                 }
 
-                function renderNamedParams(nodes, scope) {
-                    return joinWithText(_.map(nodes, function (node) {
-                        return renderParamName(node.name) + t('=') + renderParamVal(node, scope);
-                    }), ', ');
+                function renderNamedParamsOrHash(nodes, scope) {
+                    var useHash = _.any(nodes, function (node) {
+                        return !node.name.match(/^[a-zA-Z_]*$/);
+                    });
+
+                    if (useHash) {
+                        return '{' + joinWithText(_.map(nodes, function (node) {
+                            return renderParamName(node.name) + t(': ') + renderParamVal(node, scope);
+                        }), ', ') + '}';
+                    } else {
+                        return joinWithText(_.map(nodes, function (node) {
+                            return renderParamName(node.name) + t('=') + renderParamVal(node, scope);
+                        }), ', ');
+                    }
                 }
 
             case 'LIST_TAG':
@@ -774,7 +784,7 @@ GLOBAL.renderTwig = function (nodes) {
                 return openTag('widget_list', node.params)
                     + t('{{ widget_list(') + renderParamVal(name, scope)
                     + (params.length > 0 ? ', ' : '')
-                    + renderNamedParams(params, scope) + t(') }}')
+                    + renderNamedParamsOrHash(params, scope) + t(') }}')
                     + closeTag('widget_list');
 
             case 'PHP_STATIC_MEMBER_ACCESS':

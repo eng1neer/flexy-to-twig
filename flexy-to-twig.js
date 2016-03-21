@@ -88,7 +88,7 @@ case 1: case 13: case 34: case 39: case 89: case 96:
  this.$ = []; 
 break;
 case 2:
- process.stdout.write(renderTwig($$[$0-1])); return $$[$0-1]; 
+ $twig = renderTwig($$[$0-1]); process && process.stdout && process.stdout.write($twig); return $twig; 
 break;
 case 3: case 15: case 28: case 36: case 41:
  this.$ = [].concat($$[$0-1], $$[$0]); 

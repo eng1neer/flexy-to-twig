@@ -215,7 +215,7 @@ prog
  : EOF
      { $$ = []; }
  | stmts EOF
-     { process.stdout.write(renderTwig($stmts)); return $stmts; }
+     { $twig = renderTwig($stmts); process && process.stdout && process.stdout.write($twig); return $twig; }
  ;
 
 stmts

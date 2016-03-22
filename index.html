@@ -11,8 +11,6 @@
 
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
 
-    <!--<script src="node_modules/ace-builds/src-min/ace.js"></script>-->
-
     <script src="bundle.js"></script>
 </head>
 <body>
@@ -57,9 +55,21 @@
 
     <h4>Paste your Flexy code below</h4>
 
-    <div id="source" class="editor">&lt;p&gt;
-    {t(#Product#)}
-&lt;/p&gt;</div>
+    <div id="source" class="editor">&#x3C;p&#x3E;{t(#Product#)}&#x3C;/p&#x3E;
+
+&#x3C;widget class=&#x22;XLite\View\Widget&#x22; param1=&#x22;value1&#x22; param2=&#x22;value2&#x22; /&#x3E;
+
+&#x3C;widget template=&#x22;other.tpl&#x22; /&#x3E;
+
+&#x3C;list name=&#x22;product.details&#x22; param1=&#x22;value1&#x22; param2=&#x22;value2&#x22; /&#x3E;
+
+&#x3C;a IF=&#x22;!item.isDeleted()&#x26;item.isActive()&#x22; href=&#x22;{item.getURL()}&#x22;&#x3E;{item.name:h}&#x3C;/a&#x3E;
+
+{foreach:getGlobalGroups(),group}
+    &#x3C;widget class=&#x22;XLite\Module\XC\ProductFilter\View\Filter\AttributeList&#x22; group=&#x22;{group}&#x22; /&#x3E;
+{end:}
+
+&#x3C;widget class=&#x22;XLite\View\Form\Import&#x22; name=&#x22;importform&#x22; /&#x3E; &#x2026; &#x3C;widget name=&#x22;importform&#x22; end /&#x3E;</div>
 
     <div class="button-center-block">
         <button class="btn btn--inverse" id="convert">Convert Flexy to Twig</button>

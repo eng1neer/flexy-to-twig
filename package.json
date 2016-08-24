@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "ace-builds": "^1.2.2",
-    "flexy-to-twig": "^1.0.8",
+    "flexy-to-twig": "^1.0.9",
     "highlight.js": "^9.2.0"
   }
 }

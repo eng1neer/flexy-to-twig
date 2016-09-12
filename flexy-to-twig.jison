@@ -516,11 +516,11 @@ flexy_kv_pair
 
 %%
 
-GLOBAL.prettyPrint = function (obj) {
+global.prettyPrint = function (obj) {
     console.log(JSON.stringify(obj, null, 4));
 };
 
-GLOBAL.renderTwig = function (nodes) {
+global.renderTwig = function (nodes) {
     var _ = require('underscore');
 
     //prettyPrint(nodes);

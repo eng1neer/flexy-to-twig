@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-jison": "*",
+    "gulp-jison": "~1.2.0",
     "gulp-insert": "*",
     "gulp-rename": "*"
   },
